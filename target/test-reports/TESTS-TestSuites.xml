@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="HPdm4" id="0" name="LocationSpec" package="org.chai.kevin.location" tests="4" time="2.796" timestamp="2012-07-12T14:28:54">
+      <properties />
+
+      <testcase classname="org.chai.kevin.location.LocationSpec" name="code cannot be null" time="2.537" />
+
+      <testcase classname="org.chai.kevin.location.LocationSpec" name="type cannot be null" time="0.076" />
+
+      <testcase classname="org.chai.kevin.location.LocationSpec" name="data location type code cannot contain delimiter" time="0.032" />
+
+      <testcase classname="org.chai.kevin.location.LocationSpec" name="code cannot be empty" time="0.079" />
+
+      <system-out><![CDATA[--Output from code cannot be null--
+--Output from type cannot be null--
+--Output from data location type code cannot contain delimiter--
+--Output from code cannot be empty--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from code cannot be null--
+--Output from type cannot be null--
+--Output from data location type code cannot contain delimiter--
+--Output from code cannot be empty--
+]]></system-err>
+
+  </testsuite>
+</testsuites>
