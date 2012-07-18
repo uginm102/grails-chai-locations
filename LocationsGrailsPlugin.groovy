@@ -11,7 +11,7 @@ class LocationsGrailsPlugin {
     ]
 
     // TODO Fill in these fields
-    def title = "Locations Plugin" // Headline display name of the plugin
+    def title = "CHAI Locations Plugin" // Headline display name of the plugin
     def author = "Your name"
     def authorEmail = ""
     def description = '''\
