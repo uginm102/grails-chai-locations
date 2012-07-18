@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="HPdm4" name="org.chai.location.location.LocationSpec" tests="4" time="0.792" timestamp="2012-07-18T08:56:49">
+<testsuite errors="0" failures="0" hostname="Jeans-MacBook-Pro.local" name="org.chai.location.location.LocationSpec" tests="4" time="0.596" timestamp="2012-07-18T09:52:38">
   <properties />
-  <testcase classname="org.chai.location.location.LocationSpec" name="type cannot be null" time="0.603" />
-  <testcase classname="org.chai.location.location.LocationSpec" name="data location type code cannot contain delimiter" time="0.028" />
-  <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be empty" time="0.068" />
-  <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be null" time="0.063" />
+  <testcase classname="org.chai.location.location.LocationSpec" name="type cannot be null" time="0.465" />
+  <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be null" time="0.059" />
+  <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be empty" time="0.039" />
+  <testcase classname="org.chai.location.location.LocationSpec" name="data location type code cannot contain delimiter" time="0.02" />
   <system-out><![CDATA[--Output from type cannot be null--
---Output from data location type code cannot contain delimiter--
---Output from code cannot be empty--
 --Output from code cannot be null--
+--Output from code cannot be empty--
+--Output from data location type code cannot contain delimiter--
 ]]></system-out>
   <system-err><![CDATA[--Output from type cannot be null--
---Output from data location type code cannot contain delimiter--
---Output from code cannot be empty--
 --Output from code cannot be null--
+--Output from code cannot be empty--
+--Output from data location type code cannot contain delimiter--
 ]]></system-err>
 </testsuite>

@@ -16,7 +16,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity(name="Location")
-@Table(name="dhsst_location_location")
+@Table(name="chai_location_location")
 public class Location extends CalculationLocation implements Exportable {
 
 	private Location parent;

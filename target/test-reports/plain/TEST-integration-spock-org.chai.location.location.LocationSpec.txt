@@ -1,19 +1,19 @@
 Testsuite: org.chai.location.location.LocationSpec
-Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.792 sec
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.596 sec
 ------------- Standard Output ---------------
 --Output from type cannot be null--
---Output from data location type code cannot contain delimiter--
---Output from code cannot be empty--
 --Output from code cannot be null--
+--Output from code cannot be empty--
+--Output from data location type code cannot contain delimiter--
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 --Output from type cannot be null--
---Output from data location type code cannot contain delimiter--
---Output from code cannot be empty--
 --Output from code cannot be null--
+--Output from code cannot be empty--
+--Output from data location type code cannot contain delimiter--
 ------------- ---------------- ---------------
 
-Testcase: type cannot be null took 0.603 sec
-Testcase: data location type code cannot contain delimiter took 0.028 sec
-Testcase: code cannot be empty took 0.068 sec
-Testcase: code cannot be null took 0.063 sec
+Testcase: type cannot be null took 0.465 sec
+Testcase: code cannot be null took 0.059 sec
+Testcase: code cannot be empty took 0.039 sec
+Testcase: data location type code cannot contain delimiter took 0.02 sec

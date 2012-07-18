@@ -18,7 +18,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity(name="DataLocationType")
-@Table(name="dhsst_location_data_location_type", uniqueConstraints={@UniqueConstraint(columnNames="code")})
+@Table(name="chai_location_data_location_type", uniqueConstraints={@UniqueConstraint(columnNames="code")})
 @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class DataLocationType implements Exportable {
 

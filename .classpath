@@ -13,9 +13,9 @@
 	<classpathentry kind="con" path="com.springsource.sts.grails.core.CLASSPATH_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
 	<classpathentry kind="var" path="GRAILS_IVYCACHE/org.hibernate.javax.persistence/hibernate-jpa-2.0-api/jars/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="/kevin/lib/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="var" path="GRAILS_IVYCACHE/com.h2database/h2/jars/h2-1.2.147.jar"/>
 	<classpathentry kind="var" path="GRAILS_IVYCACHE/org.hibernate/hibernate-core/jars/hibernate-core-3.6.10.Final.jar"/>
 	<classpathentry kind="var" path="GRAILS_IVYCACHE/commons-lang/commons-lang/jars/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="output" path="web-app/WEB-INF/classes"/>
 </classpath>
