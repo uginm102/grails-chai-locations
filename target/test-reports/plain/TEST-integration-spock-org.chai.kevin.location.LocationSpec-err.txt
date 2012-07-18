@@ -1,4 +1,0 @@
---Output from code cannot be null--
---Output from type cannot be null--
---Output from data location type code cannot contain delimiter--
---Output from code cannot be empty--

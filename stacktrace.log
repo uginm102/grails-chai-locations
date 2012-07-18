@@ -334,3 +334,135 @@ Possible solutions: wait(), any(), wait(long), use([Ljava.lang.Object;), any(gro
 	at org.chai.kevin.IntegrationTests.newDataLocationType(IntegrationTests.groovy:93)
 	at org.chai.kevin.IntegrationTests.setupLocationTree(IntegrationTests.groovy:72)
 	at org.chai.kevin.location.LocationSpec.code cannot be empty(LocationSpec.groovy:62)
+2012-07-18 10:55:31,027 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+2012-07-18 10:55:31,037 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+2012-07-18 10:55:31,051 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+2012-07-18 10:55:31,056 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+2012-07-18 10:55:31,089 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+2012-07-18 10:55:31,095 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+2012-07-18 10:55:31,150 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:47)
+2012-07-18 10:55:31,150 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:47)
+2012-07-18 10:55:31,154 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:47)
+2012-07-18 10:55:31,155 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:47)
+2012-07-18 10:55:31,158 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:47)
+2012-07-18 10:55:31,159 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:47)
+2012-07-18 10:55:31,169 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.location.LocationSpec.data location type code cannot contain delimiter(LocationSpec.groovy:81)
+2012-07-18 10:55:31,170 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.location.LocationSpec.data location type code cannot contain delimiter(LocationSpec.groovy:81)
+2012-07-18 10:55:31,172 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.location.LocationSpec.data location type code cannot contain delimiter(LocationSpec.groovy:81)
+2012-07-18 10:55:31,173 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.location.LocationSpec.data location type code cannot contain delimiter(LocationSpec.groovy:81)
+2012-07-18 10:55:31,176 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.location.LocationSpec.data location type code cannot contain delimiter(LocationSpec.groovy:81)
+2012-07-18 10:55:31,177 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.location.LocationSpec.data location type code cannot contain delimiter(LocationSpec.groovy:81)
+2012-07-18 10:55:31,189 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:64)
+2012-07-18 10:55:31,190 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:64)
+2012-07-18 10:55:31,194 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:64)
+2012-07-18 10:55:31,195 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:64)
+2012-07-18 10:55:31,198 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:64)
+2012-07-18 10:55:31,199 [main] ERROR StackTrace  - Full Stack Trace:
+groovy.lang.MissingMethodException: No signature of method: org.chai.location.location.DataLocationType.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), use([Ljava.lang.Object;), sleep(long)
+	at org.chai.location.IntegrationTests.newDataLocationType(IntegrationTests.groovy:95)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:74)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:64)
