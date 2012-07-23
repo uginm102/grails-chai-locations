@@ -28,26 +28,14 @@ package org.chai.location;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import java.util.ArrayList
-import java.util.Arrays
-import java.util.Collections
-import java.util.HashSet
-import java.util.List
-import java.util.Map
-import java.util.Set
-
 import org.apache.commons.lang.StringUtils
-import org.chai.location.location.CalculationLocation
-import org.chai.location.location.DataLocationType
-import org.chai.location.location.DataLocation
-import org.chai.location.location.Location
-import org.chai.location.location.LocationLevel
 import org.chai.location.util.Utils
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode
 import org.hibernate.criterion.Order
 import org.hibernate.criterion.Projections
 import org.hibernate.criterion.Restrictions
+
 
 public class LocationService {
 	
@@ -56,35 +44,35 @@ public class LocationService {
 	def languageService;
 	def sessionFactory;	
 	
-    public Location getRootLocation() {
+    Location getRootLocation() {
     	return Location.findByParent(null, [cache: true])
     }
 
-	public List<LocationLevel> listLevels() {
+	List<LocationLevel> listLevels() {
 		return LocationLevel.list([cache: true])
 	}
 	
-	public List<DataLocationType> listTypes() {
+	List<DataLocationType> listTypes() {
 		return DataLocationType.list([cache: true])
 	}
 	
-	public LocationLevel findLocationLevelByCode(String code) {
+	LocationLevel findLocationLevelByCode(String code) {
 		return LocationLevel.findByCode(code, [cache: true])
 	}
 	
-    public DataLocationType findDataLocationTypeByCode(String code) {
+    DataLocationType findDataLocationTypeByCode(String code) {
     	return DataLocationType.findByCode(code, [cache: true])
     }
 	
-	public List<LocationLevel> listLevels(Set<LocationLevel> skipLevels) {
-		List<LocationLevel> levels = listLevels();
+	List<LocationLevel> listLevels(Set<LocationLevel> skipLevels) {
+		def levels = listLevels();
 		if(skipLevels != null) levels.removeAll(skipLevels);		
 		return levels;
 	}
 	
-	public List<DataLocation> getDataLocationsOfType(Set<CalculationLocation> locations,Set<DataLocationType> types){
+	List<DataLocation> getDataLocationsOfType(Set<CalculationLocation> locations,Set<DataLocationType> types){
 		if (log.isDebugEnabled()) log.debug("List<DataLocation> getDataLocations(Set<CalculationLocation> "+locations+"Set<DataLocationType>"+types+")");
-		List<DataLocation> dataLocations= new ArrayList<DataLocation>()
+		def dataLocations= new ArrayList<DataLocation>()
 		
 		for(CalculationLocation location: locations){
 			if(location instanceof DataLocation)
@@ -104,12 +92,16 @@ public class LocationService {
 		return dataLocations;
 	}
 
-	public Long getNumberOfDataLocationsForType(DataLocationType dataLocationType){
+	Long getNumberOfDataLocationsForType(DataLocationType dataLocationType){
 		return (Long)sessionFactory.getCurrentSession().createCriteria(DataLocation.class)
 		.add(Restrictions.eq("type", dataLocationType))
 		.setProjection(Projections.rowCount()).uniqueResult();
 	}
 		
+	Integer countLocation(Class<CalculationLocation> clazz, String text) {
+		return getSearchCriteria(clazz, text).setProjection(Projections.count("id")).uniqueResult()
+	}
+	
 	public <T extends CalculationLocation> T getCalculationLocation(Long id, Class<T> clazz) {
 		return (T)sessionFactory.getCurrentSession().get(clazz, id);
 	}
@@ -117,9 +109,6 @@ public class LocationService {
 	public <T extends CalculationLocation> T findCalculationLocationByCode(String code, Class<T> clazz) {
 		return (T) sessionFactory.getCurrentSession().createCriteria(clazz)
 				.add(Restrictions.eq("code", code)).uniqueResult();
-	}
-	public Integer countLocation(Class<CalculationLocation> clazz, String text) {
-		return getSearchCriteria(clazz, text).setProjection(Projections.count("id")).uniqueResult()
 	}
 	
 	public <T extends CalculationLocation> List<T> searchLocation(Class<T> clazz, String text, Map<String, String> params) {
@@ -156,12 +145,12 @@ public class LocationService {
 	}
 	
 	// TODO property of level?
-	public LocationLevel getLevelBefore(LocationLevel level, Set<LocationLevel> skipLevels) {
-		List<LocationLevel> levels = listLevels();
-		Integer intLevel = levels.indexOf(level);
+	LocationLevel getLevelBefore(LocationLevel level, Set<LocationLevel> skipLevels) {
+		def levels = listLevels();
+		def intLevel = levels.indexOf(level);
 		if(skipLevels != null){
-			List<Integer> intSkipLevels = new ArrayList<Integer>();
-			for(LocationLevel skipLevel : skipLevels)
+			def intSkipLevels = new ArrayList<Integer>();
+			for(def skipLevel : skipLevels)
 				intSkipLevels.add(levels.indexOf(skipLevel));
 			while(intLevel-1 >= 0 && intSkipLevels.contains(intLevel-1)){
 				intLevel--;
@@ -173,12 +162,12 @@ public class LocationService {
 	}
 	
 	// TODO property of level?	
-	public LocationLevel getLevelAfter(LocationLevel level, Set<LocationLevel> skipLevels) {
-		List<LocationLevel> levels = listLevels();
-		Integer intLevel = levels.indexOf(level);
+	LocationLevel getLevelAfter(LocationLevel level, Set<LocationLevel> skipLevels) {
+		def levels = listLevels();
+		def intLevel = levels.indexOf(level);
 		if(skipLevels != null){
-			List<Integer> intSkipLevels = new ArrayList<Integer>();
-			for(LocationLevel skipLevel : skipLevels)
+			def intSkipLevels = new ArrayList<Integer>();
+			for(def skipLevel : skipLevels)
 				intSkipLevels.add(levels.indexOf(skipLevel));
 			while(intLevel+1 < levels.size() && intSkipLevels.contains(intLevel+1)){
 				intLevel++;
@@ -190,26 +179,26 @@ public class LocationService {
 	}
 	
 	// TODO move to location
-	public Location getParentOfLevel(CalculationLocation location, LocationLevel level) {
-		Location tmp = location.getParent();
+	Location getParentOfLevel(CalculationLocation location, LocationLevel level) {
+		def tmp = location.parent;
 		while (tmp != null) {
-			if (tmp.getLevel().equals(level)) return tmp;
-			tmp = tmp.getParent();
+			if (tmp.level.equals(level)) return tmp;
+			tmp = tmp.parent;
 		}
 		return null;
 	}
 	
 	// TODO move to Location
-	public List<Location> getChildrenOfLevel(Location location, LocationLevel level) {
-		List<Location> result = new ArrayList<Location>();
+	List<Location> getChildrenOfLevel(Location location, LocationLevel level) {
+		def result = new ArrayList<Location>();
 		collectChildrenOfLevel(location, level, result);
 		return result;
 	}
 
 	private void collectChildrenOfLevel(Location location, LocationLevel level, List<Location> locations) {
-		if (location.getLevel().equals(level)) locations.add(location);
+		if (location.level.equals(level)) locations.add(location);
 		else {
-			for (Location child : location.getChildren()) {
+			for (def child : location.getChildren()) {
 				collectChildrenOfLevel(child, level, locations);
 			}
 		}

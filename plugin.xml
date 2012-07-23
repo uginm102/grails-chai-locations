@@ -1,12 +1,13 @@
-<plugin name='locations' version='0.1' grailsVersion='2.0 &gt; *'>
+<plugin name='locations' version='0.1.0.1' grailsVersion='2.0 &gt; *'>
   <author>Your name</author>
-  <title>Locations Plugin</title>
+  <title>CHAI Locations Plugin</title>
   <description>Brief summary/description of the plugin.
 </description>
   <documentation>http://grails.org/plugin/locations</documentation>
   <type>LocationsGrailsPlugin</type>
   <resources>
-    <resource>org.chai.kevin.LocationService</resource>
+    <resource>chai.location.importer.PluginImporter</resource>
+    <resource>org.chai.location.LocationService</resource>
   </resources>
   <repositories>
     <repository name='grailsCentral' url='http://plugins.grails.org' />

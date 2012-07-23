@@ -1,26 +1,220 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="Jeans-MacBook-Pro.local" id="0" name="LocationSpec" package="org.chai.location.location" tests="4" time="0.596" timestamp="2012-07-18T09:52:38">
+  <testsuite errors="10" failures="0" hostname="Jeans-MacBook-Pro.local" id="0" name="LocationServiceSpec" package="org.chai.location.location" tests="10" time="1.142" timestamp="2012-07-23T12:29:48">
       <properties />
 
-      <testcase classname="org.chai.location.location.LocationSpec" name="type cannot be null" time="0.465" />
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get locations of level" time="0.653">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=1, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=1, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get locations of level(LocationServiceSpec.groovy:17)
+</error>
 
-      <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be null" time="0.059" />
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=5, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=5, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get locations of level(LocationServiceSpec.groovy:17)
+</error>
 
-      <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be empty" time="0.039" />
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=9, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=9, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get locations of level(LocationServiceSpec.groovy:17)
+</error>
 
-      <testcase classname="org.chai.location.location.LocationSpec" name="data location type code cannot contain delimiter" time="0.02" />
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=13, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=13, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get locations of level(LocationServiceSpec.groovy:17)
+</error>
+
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=17, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=17, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get locations of level(LocationServiceSpec.groovy:17)
+</error>
+
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=21, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=21, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get locations of level(LocationServiceSpec.groovy:17)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get parent of level for location" time="0.072">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=25, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=25, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get parent of level for location(LocationServiceSpec.groovy:34)
+</error>
+
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=29, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=29, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get parent of level for location(LocationServiceSpec.groovy:34)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get data location by code" time="0.03">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=33, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=33, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get data location by code(LocationServiceSpec.groovy:48)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get location location by code" time="0.029">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=37, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=37, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get location location by code(LocationServiceSpec.groovy:68)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="search location" time="0.087">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=41, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=41, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.search location(LocationServiceSpec.groovy:89)
+</error>
+
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=45, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=45, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.search location(LocationServiceSpec.groovy:89)
+</error>
+
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=49, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=49, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.search location(LocationServiceSpec.groovy:89)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get list of levels with no skip levels" time="0.031">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=53, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=53, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get list of levels with no skip levels(LocationServiceSpec.groovy:106)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get list of levels with skip levels" time="0.034">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=57, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=57, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get list of levels with skip levels(LocationServiceSpec.groovy:120)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get level before with skip levels" time="0.034">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=61, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=61, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get level before with skip levels(LocationServiceSpec.groovy:134)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="get level after with skip levels" time="0.031">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=65, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=65, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.get level after with skip levels(LocationServiceSpec.groovy:166)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationServiceSpec" name="test get data locations of type" time="0.031">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=69, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=69, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationServiceSpec.test get data locations of type(LocationServiceSpec.groovy:197)
+</error>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from get locations of level--
+--Output from get parent of level for location--
+--Output from get data location by code--
+--Output from get location location by code--
+--Output from search location--
+--Output from get list of levels with no skip levels--
+--Output from get list of levels with skip levels--
+--Output from get level before with skip levels--
+--Output from get level after with skip levels--
+--Output from test get data locations of type--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from get locations of level--
+--Output from get parent of level for location--
+--Output from get data location by code--
+--Output from get location location by code--
+--Output from search location--
+--Output from get list of levels with no skip levels--
+--Output from get list of levels with skip levels--
+--Output from get level before with skip levels--
+--Output from get level after with skip levels--
+--Output from test get data locations of type--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="4" failures="0" hostname="Jeans-MacBook-Pro.local" id="1" name="LocationSpec" package="org.chai.location.location" tests="4" time="0.15" timestamp="2012-07-23T12:29:50">
+      <properties />
+
+      <testcase classname="org.chai.location.location.LocationSpec" name="type cannot be null" time="0.038">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=73, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=73, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationSpec.type cannot be null(LocationSpec.groovy:13)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be null" time="0.031">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=77, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=77, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationSpec.code cannot be null(LocationSpec.groovy:30)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationSpec" name="code cannot be empty" time="0.031">
+          <error message="No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=81, Code=1]]&#xa;Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static org.chai.location.IntegrationTests.newLocation() is applicable for argument types: (java.lang.String, java.lang.String, org.chai.location.LocationLevel) values: [Rwanda, Rwanda, LocationLevel[Id=81, Code=1]]
+Possible solutions: newLocation(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)
+	at org.chai.location.IntegrationTests.setupLocationTree(IntegrationTests.groovy:79)
+	at org.chai.location.location.LocationSpec.code cannot be empty(LocationSpec.groovy:47)
+</error>
+
+      </testcase>
+
+      <testcase classname="org.chai.location.location.LocationSpec" name="data location type code cannot be null" time="0.046">
+          <error message="Validation Error(s) occurred during save():&#xa;- Field error in object &apos;org.chai.location.DataLocationType&apos; on field &apos;names&apos;: rejected value [null]; codes [org.chai.location.DataLocationType.names.nullable.error.org.chai.location.DataLocationType.names,org.chai.location.DataLocationType.names.nullable.error.names,org.chai.location.DataLocationType.names.nullable.error.java.lang.String,org.chai.location.DataLocationType.names.nullable.error,dataLocationType.names.nullable.error.org.chai.location.DataLocationType.names,dataLocationType.names.nullable.error.names,dataLocationType.names.nullable.error.java.lang.String,dataLocationType.names.nullable.error,org.chai.location.DataLocationType.names.nullable.org.chai.location.DataLocationType.names,org.chai.location.DataLocationType.names.nullable.names,org.chai.location.DataLocationType.names.nullable.java.lang.String,org.chai.location.DataLocationType.names.nullable,dataLocationType.names.nullable.org.chai.location.DataLocationType.names,dataLocationType.names.nullable.names,dataLocationType.names.nullable.java.lang.String,dataLocationType.names.nullable,nullable.org.chai.location.DataLocationType.names,nullable.names,nullable.java.lang.String,nullable]; arguments [names,class org.chai.location.DataLocationType]; default message [Property [{0}] of class [{1}] cannot be null]&#xa;" type="grails.validation.ValidationException">grails.validation.ValidationException: Validation Error(s) occurred during save():
+- Field error in object &apos;org.chai.location.DataLocationType&apos; on field &apos;names&apos;: rejected value [null]; codes [org.chai.location.DataLocationType.names.nullable.error.org.chai.location.DataLocationType.names,org.chai.location.DataLocationType.names.nullable.error.names,org.chai.location.DataLocationType.names.nullable.error.java.lang.String,org.chai.location.DataLocationType.names.nullable.error,dataLocationType.names.nullable.error.org.chai.location.DataLocationType.names,dataLocationType.names.nullable.error.names,dataLocationType.names.nullable.error.java.lang.String,dataLocationType.names.nullable.error,org.chai.location.DataLocationType.names.nullable.org.chai.location.DataLocationType.names,org.chai.location.DataLocationType.names.nullable.names,org.chai.location.DataLocationType.names.nullable.java.lang.String,org.chai.location.DataLocationType.names.nullable,dataLocationType.names.nullable.org.chai.location.DataLocationType.names,dataLocationType.names.nullable.names,dataLocationType.names.nullable.java.lang.String,dataLocationType.names.nullable,nullable.org.chai.location.DataLocationType.names,nullable.names,nullable.java.lang.String,nullable]; arguments [names,class org.chai.location.DataLocationType]; default message [Property [{0}] of class [{1}] cannot be null]
+
+	at org.chai.location.location.LocationSpec.data location type code cannot be null(LocationSpec.groovy:64)
+</error>
+
+      </testcase>
 
       <system-out><![CDATA[--Output from type cannot be null--
 --Output from code cannot be null--
 --Output from code cannot be empty--
---Output from data location type code cannot contain delimiter--
+--Output from data location type code cannot be null--
 ]]></system-out>
 
       <system-err><![CDATA[--Output from type cannot be null--
 --Output from code cannot be null--
 --Output from code cannot be empty--
---Output from data location type code cannot contain delimiter--
+--Output from data location type code cannot be null--
 ]]></system-err>
 
   </testsuite>

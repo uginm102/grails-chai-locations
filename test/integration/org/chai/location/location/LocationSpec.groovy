@@ -2,9 +2,9 @@ package org.chai.location.location
 
 import grails.validation.ValidationException;
 
+import org.chai.location.DataLocation;
+import org.chai.location.DataLocationType;
 import org.chai.location.IntegrationTests;
-import org.chai.location.location.DataLocation;
-import org.chai.location.location.DataLocationType;
 
 class LocationSpec extends IntegrationTests {
 	
@@ -13,13 +13,13 @@ class LocationSpec extends IntegrationTests {
 		setupLocationTree()
 		
 		when:
-		new DataLocation(names:j([:]), code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
+		new DataLocation(names:"", code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
 		
 		then:
 		DataLocation.count() == 3
 		
 		when:
-		new DataLocation(names:j([:]), code: CODE(2), location: Location.findByCode(BURERA)).save(failOnError: true)
+		new DataLocation(names:"", code: CODE(2), location: Location.findByCode(BURERA)).save(failOnError: true)
 		
 		then:
 		thrown ValidationException
@@ -30,13 +30,13 @@ class LocationSpec extends IntegrationTests {
 		setupLocationTree()
 		
 		when:
-		new DataLocation(names:j([:]), code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
+		new DataLocation(names:"", code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
 		
 		then:
 		DataLocation.count() == 3
 		
 		when:
-		new DataLocation(names:j([:]), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
+		new DataLocation(names:"", type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
 		
 		then:
 		thrown ValidationException
@@ -47,19 +47,19 @@ class LocationSpec extends IntegrationTests {
 		setupLocationTree()
 		
 		when:
-		new DataLocation(names:j([:]), code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
+		new DataLocation(names:"", code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
 		
 		then:
 		DataLocation.count() == 3
 		
 		when:
-		new DataLocation(names:j([:]), code: "", type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
+		new DataLocation(names:"", code: "", type: DataLocationType.findByCode(HEALTH_CENTER_GROUP), location: Location.findByCode(BURERA)).save(failOnError: true)
 		
 		then:
 		thrown ValidationException
 	}
 	
-	def "data location type code cannot contain delimiter"() {
+	def "data location type code cannot be null"() {
 		when:
 		new DataLocationType(code: CODE(1)).save(failOnError: true)
 		
@@ -67,7 +67,7 @@ class LocationSpec extends IntegrationTests {
 		DataLocationType.count() == 1
 		
 		when:
-		new DataLocationType(code: CODE(1)+DataLocationType.DEFAULT_CODE_DELIMITER).save(failOnError: true)
+		new DataLocationType(code:"").save(failOnError: true)
 		
 		then:
 		thrown ValidationException

@@ -57,7 +57,6 @@ public class Utils {
 	public final static String CODE_DELIMITER = "~";
 	public final static String CODE_PATTERN = 
 			CODE_DELIMITER + "[^" + CODE_DELIMITER + "]+" + CODE_DELIMITER;
-//	public final static String CODE_MISSING = "MISSING_CODE";
 	public final static String VALUE_NOT_EXPORTABLE = "VALUE_NOT_EXPORTABLE";	
 
 	public static Set<String> split(String string, String delimiter) {

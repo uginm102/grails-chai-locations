@@ -31,10 +31,6 @@ package org.chai.location
 import grails.plugin.spock.IntegrationSpec;
 
 import org.chai.location.util.Utils;
-import org.chai.location.location.DataLocation;
-import org.chai.location.location.DataLocationType;
-import org.chai.location.location.Location;
-import org.chai.location.location.LocationLevel;
 import org.chai.location.Ordering;
 import org.chai.location.Translation;
 import org.chai.location.util.JSONUtils;
@@ -71,57 +67,22 @@ abstract class IntegrationTests extends IntegrationSpec {
 	static def setupLocationTree() {
 		// for the test environment, the location level is set to 4
 		// so we create a tree accordingly
-		def hc = newDataLocationType(j(["en":HEALTH_CENTER_GROUP]), HEALTH_CENTER_GROUP);
-		def dh = newDataLocationType(j(["en":DISTRICT_HOSPITAL_GROUP]), DISTRICT_HOSPITAL_GROUP);
+		
+		def hc = newDataLocationType(HEALTH_CENTER_GROUP, HEALTH_CENTER_GROUP);
+		def dh = newDataLocationType(DISTRICT_HOSPITAL_GROUP, DISTRICT_HOSPITAL_GROUP);
 		
 		def country = newLocationLevel(NATIONAL, 1)
 		def province = newLocationLevel(PROVINCE, 2)
 		def district = newLocationLevel(DISTRICT, 3)
 		def sector = newLocationLevel(SECTOR, 4)
-		
-		def rwanda = newLocation(j(["en":RWANDA]), RWANDA, country)
-		def north = newLocation(j(["en":NORTH]), NORTH, rwanda, province)
-		def burera = newLocation(j(["en":BURERA]), BURERA, north, district)
-		
-		newDataLocation(j(["en":BUTARO]), BUTARO, burera, dh)
-		newDataLocation(j(["en":KIVUYE]), KIVUYE, burera, hc)
-	}
-	
-	static def newDataLocationType(def code) {
-		return newDataLocationType([:], code)
-	}
-	
-	static def newDataLocationType(def names, def code) {
-		return new DataLocationType(names: names, code: code).save(failOnError: true)
-	}
-	
-	static def newDataLocation(def code, def location, def type) {
-		return newDataLocation([:], code, location, type)
-	}
-	
-	static def newDataLocation(def names, def code, def location, def type) {
-		def dataLocation = new DataLocation(names: names, code: code, location: location, type: type).save(failOnError: true)
-		if (location != null) {
-			 location.dataLocations << dataLocation
-			 location.save(failOnError: true)
-		}
-		return dataLocation
-	}
-	
-	static def newLocationLevel(String code, def order) {
-		return new LocationLevel(code: code, order: order).save(failOnError: true)
-	}
-	
-	static def newLocation(String code, def level) {
-		return newLocation([:], code, null, level)
-	}
+			
+		def rwanda = newLocation(RWANDA, RWANDA, country)
+		def north = newLocation(NORTH, NORTH, rwanda, province)
+		def burera = newLocation(BURERA, BURERA, north, district)
 
-	static def newLocation(def names, def code, def level) {
-		return newLocation(names, code, null, level)
-	}
 		
-	static def newLocation(String code, def parent, def level) {
-		return newLocation([:], code, parent, level)
+		newDataLocation(BUTARO, BUTARO, burera, dh)
+		newDataLocation(KIVUYE, KIVUYE, burera, hc)
 	}
 	
 	static def newLocation(def names, def code, def parent, def level) {
@@ -133,11 +94,30 @@ abstract class IntegrationTests extends IntegrationSpec {
 			parent.save(failOnError: true)
 		}
 		return location
-	}	
-	
-	static def g(def types) {
-		return Utils.unsplit(types, DataLocationType.DEFAULT_CODE_DELIMITER)
 	}
+	
+	
+	static def newDataLocation(def names, def code, def location, def type) {
+		def dataLocation = new DataLocation(names: names, code: code, location: location, type: type).save(failOnError: true)
+		if (location != null) {
+			 location.dataLocations << dataLocation
+			 location.save(failOnError: true)
+		}
+		if (type != null) {
+			type.dataLocations << dataLocation
+			type.save(failOnError: true)
+	   }
+		return dataLocation
+	}
+	
+	static def newDataLocationType(def names, def code) {
+		return new DataLocationType(names: names, code: code).save(failOnError: true)
+	}
+		
+	static def newLocationLevel(def names, def code) {
+		return new LocationLevel(code: code, names: names).save(failOnError: true)
+	}
+	
 	
 	static def getLocationLevels(def levels) {
 		def result = []
@@ -175,16 +155,16 @@ abstract class IntegrationTests extends IntegrationSpec {
 		return result;
 	}
 	
-	static s(def list) {
-		return new HashSet(list)
-	}
+//	static s(def list) {
+//		return new HashSet(list)
+//	}
+//	
 	
-	
-	static j(def map) {
-		return new Translation(jsonText: JSONUtils.getJSONFromMap(map));
-	}
-	
-	static o(def map) {
-		return new Ordering(jsonText: JSONUtils.getJSONFromMap(map));
-	}
+//	static j(def map) {
+//		return new Translation(jsonText: JSONUtils.getJSONFromMap(map));
+//	}
+//	
+//	static o(def map) {
+//		return new Ordering(jsonText: JSONUtils.getJSONFromMap(map));
+//	}
 }
