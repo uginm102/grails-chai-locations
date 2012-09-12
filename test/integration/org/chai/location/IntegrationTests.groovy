@@ -30,15 +30,8 @@ package org.chai.location
 
 import grails.plugin.spock.IntegrationSpec;
 
-import org.chai.location.util.Utils;
-import org.chai.location.Ordering;
-import org.chai.location.Translation;
-import org.chai.location.util.JSONUtils;
-
 abstract class IntegrationTests extends IntegrationSpec {
 	
-	def refreshValueService
-	def springcacheService
 	def sessionFactory
 	
 	static final String CODE (def number) { return "CODE"+number }
@@ -58,113 +51,81 @@ abstract class IntegrationTests extends IntegrationSpec {
 	static final String KIVUYE = "Kivuye HC"
 	
 	
-	def setup() {
-		// using cache.use_second_level_cache = false in test mode doesn't work so
-		// we flush the cache after each test
-		springcacheService.flushAll()
-	}
-	
 	static def setupLocationTree() {
 		// for the test environment, the location level is set to 4
 		// so we create a tree accordingly
 		
-		def hc = newDataLocationType(HEALTH_CENTER_GROUP, HEALTH_CENTER_GROUP);
-		def dh = newDataLocationType(DISTRICT_HOSPITAL_GROUP, DISTRICT_HOSPITAL_GROUP);
+		def hc = newDataLocationType(['en':HEALTH_CENTER_GROUP], HEALTH_CENTER_GROUP);
+		def dh = newDataLocationType(['en':DISTRICT_HOSPITAL_GROUP], DISTRICT_HOSPITAL_GROUP);
 		
-		def country = newLocationLevel(NATIONAL, 1)
-		def province = newLocationLevel(PROVINCE, 2)
-		def district = newLocationLevel(DISTRICT, 3)
-		def sector = newLocationLevel(SECTOR, 4)
+		def country = newLocationLevel(['en':NATIONAL], NATIONAL)
+		def province = newLocationLevel(['en':PROVINCE], PROVINCE)
+		def district = newLocationLevel(['en':DISTRICT], DISTRICT)
+		def sector = newLocationLevel(['en':SECTOR], SECTOR)
 			
-		def rwanda = newLocation(RWANDA, RWANDA, country)
-		def north = newLocation(NORTH, NORTH, rwanda, province)
-		def burera = newLocation(BURERA, BURERA, north, district)
+		def rwanda = newLocation(['en':RWANDA], RWANDA,null,country)
+		def north = newLocation(['en':NORTH], NORTH, rwanda, province)
+		def burera = newLocation(['en':BURERA], BURERA, north, district)
 
-		
-		newDataLocation(BUTARO, BUTARO, burera, dh)
-		newDataLocation(KIVUYE, KIVUYE, burera, hc)
+		def butaro = newDataLocation(['en':BUTARO], BUTARO, burera, dh)
+		def kivuye = newDataLocation(['en':KIVUYE], KIVUYE, burera, hc)
 	}
 	
-	static def newLocation(def names, def code, def parent, def level) {
-		def location = new Location(names: names, code: code, parent: parent, level: level).save(failOnError: true)
-		level.locations << location
+	public static def newDataLocationType(def names, def code) {
+		def dataLocationType = new DataLocationType(code: code)
+		setLocaleValueInMap(dataLocationType,names,"Names")
+		return dataLocationType.save(failOnError: true)
+	}
+	
+	public static def newLocationLevel(def names, def code) {
+		def locationLevel = new LocationLevel(code: code)
+		setLocaleValueInMap(locationLevel,names,"Names")
+		return locationLevel.save(failOnError: true)
+	}
+	
+	public static def newLocationLevel(def code, Integer order) {
+		def locationLevel = new LocationLevel(code: code, order: order)
+		return locationLevel.save(failOnError: true)
+	}
+	
+	public static def newLocation(def names, def code, def parent, def level) {
+		def location = new Location(code: code, parent: parent, level: level)
+		setLocaleValueInMap(location,names,"Names")
+		location.save(failOnError: true)
+		level.addToLocations(location)
 		level.save(failOnError: true)
 		if (parent != null) {
-			parent.children << location
+			parent.addToChildren(location)
 			parent.save(failOnError: true)
 		}
 		return location
 	}
 	
-	
-	static def newDataLocation(def names, def code, def location, def type) {
-		def dataLocation = new DataLocation(names: names, code: code, location: location, type: type).save(failOnError: true)
+	public static def newDataLocation(def names, def code, def location, def type) {
+		def dataLocation = new DataLocation(code: code, location: location, type: type)
+		setLocaleValueInMap(dataLocation,names,"Names")
+		dataLocation.save(failOnError: true)
 		if (location != null) {
-			 location.dataLocations << dataLocation
-			 location.save(failOnError: true)
+			location.addToDataLocations(dataLocation)
+			location.save(failOnError: true)
 		}
 		if (type != null) {
-			type.dataLocations << dataLocation
+			type.addToDataLocations(dataLocation)
 			type.save(failOnError: true)
 	   }
 		return dataLocation
 	}
-	
-	static def newDataLocationType(def names, def code) {
-		return new DataLocationType(names: names, code: code).save(failOnError: true)
-	}
-		
-	static def newLocationLevel(def names, def code) {
-		return new LocationLevel(code: code, names: names).save(failOnError: true)
-	}
-	
-	
-	static def getLocationLevels(def levels) {
-		def result = []
-		for (def level : levels) {
-			result.add LocationLevel.findByCode(level)
+
+	public static def setLocaleValueInMap(def object, def map, def fieldName){
+		def methodName = 'set'+fieldName
+		//TODO replace with CONF variable if this fails
+		def grailsApplication = new Location().domainClass.grailsApplication
+		grailsApplication.config.i18nFields.locales.each{ loc ->
+			if(map.get(loc) != null)
+				object."$methodName"(map.get(loc),new Locale(loc))
+			else
+				object."$methodName"("",new Locale(loc))
 		}
-		return result;
 	}
 	
-	static def getCalculationLocation(def code) {
-		def location = Location.findByCode(code)
-		if (location == null) location = DataLocation.findByCode(code)
-		return location
-	}
-	
-	static def getLocations(def codes) {
-		def result = []
-		for (String code : codes) {
-			result.add(Location.findByCode(code))
-		}
-		return result
-	}
-	
-	static def getDataLocations(def codes) {
-		def result = []
-		for (String code : codes) {
-			result.add(DataLocation.findByCode(code))
-		}
-		return result
-	}
-	static def getDataLocationTypes(def codes){
-		def result=[]
-		for(String code: codes)
-			result.add(DataLocationType.findByCode(code));
-		return result;
-	}
-	
-//	static s(def list) {
-//		return new HashSet(list)
-//	}
-//	
-	
-//	static j(def map) {
-//		return new Translation(jsonText: JSONUtils.getJSONFromMap(map));
-//	}
-//	
-//	static o(def map) {
-//		return new Ordering(jsonText: JSONUtils.getJSONFromMap(map));
-//	}
 }

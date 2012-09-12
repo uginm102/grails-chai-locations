@@ -1,4 +1,4 @@
-<plugin name='locations' version='0.1.0.1' grailsVersion='2.0 &gt; *'>
+<plugin name='locations' version='0.2-CHAI' grailsVersion='2.1 &gt; *'>
   <author>Your name</author>
   <title>CHAI Locations Plugin</title>
   <description>Brief summary/description of the plugin.
@@ -6,24 +6,28 @@
   <documentation>http://grails.org/plugin/locations</documentation>
   <type>LocationsGrailsPlugin</type>
   <resources>
-    <resource>chai.location.importer.PluginImporter</resource>
+    <resource>org.chai.location.CalculationLocation</resource>
+    <resource>org.chai.location.DataLocation</resource>
+    <resource>org.chai.location.DataLocationType</resource>
+    <resource>org.chai.location.Location</resource>
+    <resource>org.chai.location.LocationLevel</resource>
+    <resource>org.chai.location.LanguageService</resource>
     <resource>org.chai.location.LocationService</resource>
   </resources>
   <repositories>
-    <repository name='grailsCentral' url='http://plugins.grails.org' />
-    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
-    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
-    <repository name='http://m2repo.spockframework.org/ext/' url='http://m2repo.spockframework.org/ext/' />
-    <repository name='http://m2repo.spockframework.org/snapshots/' url='http://m2repo.spockframework.org/snapshots/' />
   </repositories>
-  <dependencies>
+  <dependencies />
+  <plugins>
     <compile>
-      <dependency group='commons-lang' name='commons-lang' version='2.6' />
+      <plugin group='org.grails.plugins' name='i18n-fields' version='0.6.1-CHAI' />
     </compile>
-  </dependencies>
-  <plugins />
-  <runtimePluginRequirements />
+  </plugins>
+  <runtimePluginRequirements>
+    <plugin name='i18n-fields' version='0.6.1-CHAI' />
+    <plugin name='hibernate' version='2.1.0' />
+  </runtimePluginRequirements>
   <behavior />
 </plugin>

@@ -1,6 +1,5 @@
-package org.chai.location;
-/** 
- * Copyright (c) 2011, Clinton Health Access Initiative.
+/**
+ * Copyright (c) 2012, Clinton Health Access Initiative.
  *
  * All rights reserved.
  *
@@ -14,7 +13,7 @@ package org.chai.location;
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,35 +25,42 @@ package org.chai.location;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package org.chai.location;
 
-import org.chai.location.Exportable;
-import org.chai.location.Orderable;
-import org.chai.location.util.Utils;
+import i18nfields.I18nFields
 
-
-public class LocationLevel implements Exportable {
-
+/**
+* @author Jean Kahigiso M.
+*
+*/
+@i18nfields.I18nFields
+class LocationLevel{
+	
 	String code
 	String names
+	
 	static hasMany = [locations: Location]
+	
+	static i18nFields = ['names']
 	
 	String toString() {
 		return "LocationLevel[Id=" + id + ", Code=" + code + "]";
 	}
-
-	String toExportString() {
-		return "[" + Utils.formatExportCode(code) + "]";
-	}
 	
 	static constraints ={
-		code (nullable: false, unique: true, blank: false)
+		code nullable: false, unique: true, blank: false
+		names nullable: true, blank: true
 	}
 	
 	static mapping = {
-		table "chai_location_location_level"
-		locations column: "location"
+		table "chai_location_level"
+		locations column: "location_id"
+		version false
+//		names_en type:"text"
+//		names_fr type:"text"
+//		names_rw type:"text"
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -65,7 +71,7 @@ public class LocationLevel implements Exportable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this.is(obj))
 			return true;
 		if (obj == null)
 			return false;
@@ -78,7 +84,5 @@ public class LocationLevel implements Exportable {
 		} else if (!code.equals(other.code))
 			return false;
 		return true;
-	}	
-	
-	
+	}
 }

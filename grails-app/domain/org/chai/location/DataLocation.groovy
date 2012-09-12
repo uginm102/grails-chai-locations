@@ -1,6 +1,5 @@
-package org.chai.location;
-/** 
- * Copyright (c) 2011, Clinton Health Access Initiative.
+/**
+ * Copyright (c) 2012, Clinton Health Access Initiative.
  *
  * All rights reserved.
  *
@@ -14,7 +13,7 @@ package org.chai.location;
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,14 +25,18 @@ package org.chai.location;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package org.chai.location;
 
+/**
+* @author Jean Kahigiso M.
+*
+*/
 
-import org.chai.location.Exportable;
-import org.chai.location.util.Utils;
+class DataLocation extends CalculationLocation {
 
-public class DataLocation extends CalculationLocation implements Exportable {
-
-	static belongsTo = [type: DataLocationType,location: Location]
+	DataLocationType type
+	
+	static belongsTo = [type: DataLocationType, location: Location]
 
 	List<DataLocation> getDataLocations() {
 		def result = new ArrayList<DataLocation>();
@@ -59,17 +62,13 @@ public class DataLocation extends CalculationLocation implements Exportable {
 		return true;
 	}
 
-	
 	String toString() {
 		return "DataLocation[Id=" + id + ", Code=" + code + "]";
 	}
 	
-	String toExportString() {
-		return "[" + Utils.formatExportCode(code) + "]";
-	}
-	
 	static mapping = {
 		table "chai_location_data_location"
+		version false
 	}
 	
 	static constraints = {

@@ -1,13 +1,17 @@
 class LocationsGrailsPlugin {
     // the plugin version
-    def version = "0.2"
+    def version = "0.2-CHAI"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "2.0 > *"
+    def grailsVersion = "2.1 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    def dependsOn = ["i18n-fields":"0.6.1-CHAI", "hibernate": "2.1.0"]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-        "grails-app/views/error.gsp"
+        "grails-app/views/error.gsp",
+		"grails-app/views/*",
+		"web-app/css/*",
+		"web-app/js/*",
+		"web-app/images/*"
     ]
 
     // TODO Fill in these fields

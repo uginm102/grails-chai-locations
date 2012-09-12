@@ -1,6 +1,5 @@
-package org.chai.location;
-/** 
- * Copyright (c) 2011, Clinton Health Access Initiative.
+/**
+ * Copyright (c) 2012, Clinton Health Access Initiative.
  *
  * All rights reserved.
  *
@@ -14,7 +13,7 @@ package org.chai.location;
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,44 +25,47 @@ package org.chai.location;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package org.chai.location;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-import org.chai.location.Exportable;
-import org.chai.location.util.Utils;
-public class Location extends CalculationLocation implements Exportable {
+/**
+* @author Jean Kahigiso M.
+*
+*/
+class Location extends CalculationLocation {
 
-	 static belongsTo = [parent: Location,level: LocationLevel]
-	 static hasMany = [children: Location,dataLocactions: DataLocation]
+	Location parent
+	LocationLevel level
 	
-	List<DataLocation> getDataLocations() {
-		return dataLocations;
-	}
+	static belongsTo = [parent: Location, level: LocationLevel]
+	static hasMany = [dataLocations: DataLocation,children: Location]
 	
 	//gets all location children
-	List<Location> getChildren(Set<LocationLevel> skipLevels) {		
+	List<Location> getChildren(Set<LocationLevel> skipLevels) {
 		def result = new ArrayList<Location>();
 		for (def child : children) {
-			if (skipLevels != null && skipLevels.contains(child.getLevel())) {
+			if (skipLevels != null && skipLevels.contains(child.level)) {
 				result.addAll(child.getChildren(skipLevels));
 			}
 			else result.add(child);
 		}
 		return result;
 	}
-
-	//gets all data locations
+	
+	// returns the children data locations only, without collecting data locations at lower levels
+	// if the child's level is skipped, returns the child's data locations
 	List<DataLocation> getDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
-		def result = new ArrayList<DataLocation>();
-		
-		def dataLocations = getDataLocations();
-		for (def dataLocation : dataLocations) {
-			if (types == null || types.contains(dataLocation.getType())) 
+		List<DataLocation> result = new ArrayList<DataLocation>();
+		for (DataLocation dataLocation : dataLocations) {
+			if (types == null || types.contains(dataLocation.type)) 
 				result.add(dataLocation);
 		}
 		
-		for (def child : children) {
-			if (skipLevels != null && skipLevels.contains(child.getLevel())) {
+		for (Location child : children) {
+			if (skipLevels != null && skipLevels.contains(child.level)) {
 				result.addAll(child.getDataLocations(skipLevels, types));
 			}
 		}
@@ -80,7 +82,7 @@ public class Location extends CalculationLocation implements Exportable {
 	}
 	
 	//gets all location children and data locations (that have data locations)
-	List<CalculationLocation> getChildrenEntitiesWithDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+	List<CalculationLocation> getChildrenEntitiesWithDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types, boolean data = true) {
 		def result = new ArrayList<CalculationLocation>();
 		
 		def locationChildren = getChildren(skipLevels);
@@ -90,35 +92,44 @@ public class Location extends CalculationLocation implements Exportable {
 				result.add(locationChild);	
 		}
 		
-		result.addAll(getDataLocations(skipLevels, types));
+		if (data) result.addAll(getDataLocations(skipLevels, types));
+		
 		return result;
 	}
 	
 	//gets all location children, grand-children, etc (that have data locations)
-	List<Location> collectTreeWithDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+	List<Location> collectTreeWithDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types, boolean data = true) {
 		def locations = new ArrayList<Location>();
 		collectLocations(locations, null, skipLevels, types);
+		if (data) locations.addAll(collectDataLocations(skipLevels, types));
 		return locations;
 	}
 	
 	boolean collectsData() {
 		return false;
 	}
-
+	
 	String toString() {
 		return "Location[Id=" + id + ", Code=" + code + "]";
 	}
-
-	String toExportString() {
-		return "[" + Utils.formatExportCode(code) + "]";
-	}
 	
-	static constraints ={
-		level (nullable: false)
-		parent(nullable: true)
+	static constraints = {
+		importFrom CalculationLocation
+		level nullable: false
+		parent(nullable: true, validator: { val, obj ->
+			if (val == null) {
+				Location.withNewTransaction {
+					def roots = Location.findAllByParentIsNull()
+					return roots.empty || roots.equals([obj])
+				}
+			}
+			// TODO validate that there are no loops, i.e the graph must be a DAG
+			return true
+		})
 	}
 	
 	static mapping = {
 		table "chai_location_location"
+		version false
 	}
 }

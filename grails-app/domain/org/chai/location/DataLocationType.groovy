@@ -1,6 +1,5 @@
-package org.chai.location;
-/** 
- * Copyright (c) 2011, Clinton Health Access Initiative.
+/**
+ * Copyright (c) 2012, Clinton Health Access Initiative.
  *
  * All rights reserved.
  *
@@ -14,7 +13,7 @@ package org.chai.location;
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,34 +25,37 @@ package org.chai.location;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package org.chai.location;
 
+import i18nfields.I18nFields
 
-import org.chai.location.Exportable;
-import org.chai.location.util.Utils;
-
-public class DataLocationType implements Exportable {
-
-	static final String DEFAULT_CODE_DELIMITER = ",";
+/**
+ * @author Jean Kahigiso M.
+ */
+@i18nfields.I18nFields
+public class DataLocationType {
 	
 	String code
 	String names
-	static hasMany = [dataLocactions: DataLocation]
+	
+	static hasMany = [dataLocations: DataLocation]
+	static i18nFields = ['names']
 	
 	String toString() {
 		return "DataLocationType[Id=" + id + ", Code=" + code + "]";
 	}
-
-	String toExportString() {
-		return "[" + Utils.formatExportCode(code) + "]";
-	}
 	
 	static constraints ={
-		code (nullable: false, blank: false, unique: true)
+		code nullable: false, blank: false, unique: true
+		names nullable: true, blank: true
 	}
 	
 	static mapping = {
 		table "chai_location_data_location_type"
-		dataLocactions column:"data_location"
+		version false
+//		names_en type:"text"
+//		names_fr type:"text"
+//		names_rw type:"text"
 	}
 
 	@Override
@@ -66,7 +68,7 @@ public class DataLocationType implements Exportable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this.is(obj))
 			return true;
 		if (obj == null)
 			return false;
@@ -80,6 +82,5 @@ public class DataLocationType implements Exportable {
 			return false;
 		return true;
 	}	
-	
 	
 }

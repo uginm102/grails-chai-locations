@@ -22,3 +22,8 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+i18nFields{
+	locales = ["en","fr","rw"]
+	extraLocales = ["rw"]
+}

@@ -1,6 +1,5 @@
-package org.chai.location;
-/** 
- * Copyright (c) 2011, Clinton Health Access Initiative.
+/**
+ * Copyright (c) 2012, Clinton Health Access Initiative.
  *
  * All rights reserved.
  *
@@ -14,7 +13,7 @@ package org.chai.location;
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -26,69 +25,95 @@ package org.chai.location;
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package org.chai.location;
 
-public abstract class CalculationLocation {
+import i18nfields.I18nFields
 
-		String names
-		String code
-		String coordinates
-			
-		boolean collectLocations(List<Location> locations, List<DataLocation> dataLocations, Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
-			boolean result = false;
-			for (Location child : getChildren(skipLevels)) {
-				result = result | child.collectLocations(locations, dataLocations, skipLevels, types);
-			}
-		
-			List<DataLocation> dataLocationsChildren = getDataLocations(skipLevels, types);
-			if (!dataLocationsChildren.isEmpty()) {
-				result = true;
-				if (dataLocations != null) dataLocations.addAll(dataLocationsChildren);
-			}
-			
-			if (result) {
-				if (locations != null && !this.collectsData()) locations.add((Location) this);
-			}
-			return result;
-		}
-		
-		List<DataLocation> collectDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
-			List<DataLocation> dataLocations = new ArrayList<DataLocation>();
-			collectLocations(null, dataLocations, skipLevels, types);
-			return dataLocations;
-		}
-				
-		static constraints = {
-			code (nullable: false, blank: false, unique: true)
+/**
+* @author Jean Kahigiso M.
+*
+*/
+@i18nfields.I18nFields
+abstract class CalculationLocation {
+
+	String code
+	String names
+	String coordinates
+	
+	
+	static i18nFields = ['names']
+
+	boolean collectLocations(List<Location> locations, List<DataLocation> dataLocations, Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+		boolean result = false;
+		for (Location child : getChildren(skipLevels)) {
+			result = result | child.collectLocations(locations, dataLocations, skipLevels, types);
 		}
 		
-		static mapping = {
-			table "chai_location_abstract"
+		List<DataLocation> dataLocationsChildren = getDataLocations(skipLevels, types)
+		if (!dataLocationsChildren.isEmpty()) {
+			result = true;
+			if (dataLocations != null) dataLocations.addAll(dataLocationsChildren);
 		}
-
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((code == null) ? 0 : code.hashCode());
-			return result;
+		
+		if (result) {
+			if (locations != null && !this.collectsData()) locations.add((Location) this);
 		}
+		return result;
+	}
+	
+	List<DataLocation> collectDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+		List<DataLocation> dataLocations = new ArrayList<DataLocation>();
+		collectLocations(null, dataLocations, skipLevels, types);
+		return dataLocations;
+	}
+	
+	abstract boolean collectsData();
+	
+	Map<String, String> getNamesMap() {
+		Map result = [:]
+		result.metaClass.get = {String language -> return getNames(new Locale(language))}
+	}
+	
+	static constraints = {
+		code nullable: false, blank: false, unique: true
+		coordinates nullable: true, blank: true
+		names nullable: true, blank: true
+	}
+	
+	static mapping = {
+		table "chai_location_abstract"
+		tablePerSubclass true
+		version false
+		coordinates type: "text"
+		code column: 'code'
+//		names_en type: "text"
+//		names_fr type: "text"
+//		names_rw type: "text"
+	}
 
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			CalculationLocation other = (CalculationLocation) obj;
-			if (code == null) {
-				if (other.code != null)
-					return false;
-			} else if (!code.equals(other.code))
-				return false;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this.is(obj))
 			return true;
-		}		
-		
-		
+		if (obj == null)
+			return false;
+		if (!(obj instanceof CalculationLocation))
+			return false;
+		CalculationLocation other = (CalculationLocation) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		return true;
+	}
+			
 }

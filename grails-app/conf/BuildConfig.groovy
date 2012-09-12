@@ -13,6 +13,7 @@ grails.project.dependency.resolution = {
     }
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     repositories {
+		grailsHome()
         grailsCentral()
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
@@ -26,14 +27,22 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
-        // runtime 'mysql:mysql-connector-java:5.1.5'
-		compile 'commons-lang:commons-lang:2.6'
+        // runtime 'mysql:mysql-connector-java:5.1.18'
     }
 
     plugins {
-        build(":tomcat:$grailsVersion",
-              ":release:1.0.0") {
+		build(":tomcat:$grailsVersion",
+              ":release:2.0.3",
+              ":rest-client-builder:1.0.2") {
             export = false
         }
+		compile (":hibernate:$grailsVersion") {
+			export = false
+		}
+		compile ":i18n-fields:0.6.1-CHAI"
+		
+		test (":spock:0.6") {
+			export = false
+		}
     }
 }
