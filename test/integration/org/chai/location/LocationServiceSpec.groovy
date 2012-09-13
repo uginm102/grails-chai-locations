@@ -86,18 +86,104 @@ class LocationServiceSpec extends IntegrationTests {
 	def "search location"() {
 		setup:
 		setupLocationTree()
-		
+
 		when:
-		def result = locationService.searchLocation(Location.class, text, [:])
-		
+		def result = locationService.searchLocation(Location.class, text,[:])
+
 		then:
 		result.equals(expectedResult.collect{Location.findByCode(it)})
-		
+
 		where:
-		text	| expectedResult
-		"Bur"	| [BURERA]
-		"Nor"	| [NORTH]
-		"n/a"	| []
+		text  | expectedResult
+		"Bur" | [BURERA]
+		"Nor" | [NORTH]
+		"But" | []
+		"n/a" | []
+	}
+
+	def "search Datalocation"() {
+		setup:
+		setupLocationTree()
+
+		when:
+		def result = locationService.searchLocation(DataLocation.class, text,[:])
+		
+		then:
+		result.equals(expectedResult.collect{DataLocation.findByCode(it)})
+
+		where:
+		text     | expectedResult
+		"But"    | [BUTARO]
+		"But DH" | [BUTARO]
+		"But Kiv"| []
+		"Kiv"    | [KIVUYE]
+		"Bur"    | []
+		"n/a"    | []
+	}
+	
+	def "search Calculationlocation"() {
+		setup:
+		setupLocationTree()
+
+		when:
+		def result = locationService.searchLocation(CalculationLocation.class, text,[:])
+
+		then:
+		result.equals(expectedResult.collect{CalculationLocation.findByCode(it)})
+
+		where:
+		text  | expectedResult
+		"But" | [BUTARO]
+		"Bur" | [BURERA]
+		"n/a" | []
+	}
+	
+	def "search with limit and offset"() {
+		setup:
+		setupLocationTree()
+		def result
+		
+		when:
+		result = locationService.searchLocation(Location.class, "", [max: 1])
+		
+		then:
+		result*.code.equals([RWANDA])
+		
+		when:
+		result = locationService.searchLocation(Location.class, "", [max: 2])
+		
+		then:
+		result*.code.equals([RWANDA, NORTH])
+		
+		when:
+		result = locationService.searchLocation(Location.class, "", [max: 2, offset: 1])
+		
+		then:
+		result*.code.equals([NORTH, BURERA])
+	}
+	
+	def "search order on names field"() {
+		setup:
+		setupLocationTree()
+		def result
+		
+		when:
+		result = locationService.searchLocation(Location.class, "", [sort: 'names', order: 'asc'])
+		
+		then:
+		result*.code.equals([BURERA, NORTH, RWANDA])
+		
+		when:
+		result = locationService.searchLocation(Location.class, "", [sort: 'names', order: 'desc'])
+		
+		then:
+		result*.code.equals([RWANDA, NORTH, BURERA])
+		
+		when: "default is asc"
+		result = locationService.searchLocation(Location.class, "", [sort: 'names'])
+		
+		then:
+		result*.code.equals([BURERA, NORTH, RWANDA])
 	}
 	
 	def "get list of levels with no skip levels"(){
