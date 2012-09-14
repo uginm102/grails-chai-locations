@@ -117,12 +117,12 @@ class Location extends CalculationLocation {
 		importFrom CalculationLocation
 		level nullable: false
 		parent(nullable: true, validator: { val, obj ->
-			if (val == null) {
-				Location.withNewTransaction {
-					def roots = Location.findAllByParentIsNull()
-					return roots.empty || roots.equals([obj])
-				}
-			}
+//			if (val == null) {
+//				Location.withNewTransaction {
+//					def roots = Location.findAllByParentIsNull()
+//					return roots.empty || roots.equals([obj])
+//				}
+//			}
 			// TODO validate that there are no loops, i.e the graph must be a DAG
 			return true
 		})

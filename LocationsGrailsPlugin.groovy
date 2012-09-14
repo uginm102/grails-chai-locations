@@ -1,6 +1,6 @@
 class LocationsGrailsPlugin {
     // the plugin version
-    def version = "0.2.1-CHAI"
+    def version = "0.2.2-CHAI"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.1 > *"
     // the other plugins this plugin depends on

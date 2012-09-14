@@ -1,4 +1,4 @@
-<plugin name='locations' version='0.2-CHAI' grailsVersion='2.1 &gt; *'>
+<plugin name='locations' version='0.2.2-CHAI' grailsVersion='2.1 &gt; *'>
   <author>Your name</author>
   <title>CHAI Locations Plugin</title>
   <description>Brief summary/description of the plugin.
