@@ -40,9 +40,28 @@ abstract class CalculationLocation {
 	String names
 	String coordinates
 	
+	// deprecated
+	String jsonNames;
 	
 	static i18nFields = ['names']
 
+	static constraints = {
+		code nullable: false, blank: false, unique: true
+		coordinates nullable: true, blank: true
+		names nullable: true, blank: true
+		
+		// deprecated
+		jsonNames nullable: true
+	}
+	
+	static mapping = {
+		table "chai_location_abstract"
+		tablePerSubclass true
+		cache true
+		coordinates type: "text"
+	}
+
+	
 	boolean collectLocations(List<Location> locations, List<DataLocation> dataLocations, Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
 		boolean result = false;
 		for (Location child : getChildren(skipLevels)) {
@@ -74,23 +93,6 @@ abstract class CalculationLocation {
 		result.metaClass.get = {String language -> return getNames(new Locale(language))}
 	}
 	
-	static constraints = {
-		code nullable: false, blank: false, unique: true
-		coordinates nullable: true, blank: true
-		names nullable: true, blank: true
-	}
-	
-	static mapping = {
-		table "chai_location_abstract"
-		tablePerSubclass true
-		version false
-		coordinates type: "text"
-		code column: 'code'
-//		names_en type: "text"
-//		names_fr type: "text"
-//		names_rw type: "text"
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,12 +103,15 @@ abstract class CalculationLocation {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this.is(obj))
+		if (this.is(obj)) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (!(obj instanceof CalculationLocation))
+		}
+		if (!(obj instanceof CalculationLocation)) {
 			return false;
+		}
 		CalculationLocation other = (CalculationLocation) obj;
 		if (code == null) {
 			if (other.code != null)

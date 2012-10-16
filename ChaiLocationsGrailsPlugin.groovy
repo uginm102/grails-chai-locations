@@ -1,10 +1,10 @@
-class LocationsGrailsPlugin {
+class ChaiLocationsGrailsPlugin {
     // the plugin version
-    def version = "0.2.2-CHAI"
+    def version = "0.2.3-CHAI"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "2.1 > *"
+    def grailsVersion = "1.3.7 > *"
     // the other plugins this plugin depends on
-    def dependsOn = ["i18n-fields":"0.6.1-CHAI", "hibernate": "2.1.0"]
+    def dependsOn = [:]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp",
@@ -16,31 +16,35 @@ class LocationsGrailsPlugin {
 
     // TODO Fill in these fields
     def title = "CHAI Locations Plugin" // Headline display name of the plugin
-    def author = "Your name"
-    def authorEmail = ""
+    def author = "Eugene Munyaneza"
+    def authorEmail = "emunyaneza@clintonhealthaccess.org"
     def description = '''\
-Brief summary/description of the plugin.
+CHAI locations plugin.
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/locations"
+    def documentation = "http://github.org/uginm102/grails-chai-locations"
 
     // Extra (optional) plugin metadata
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
-//    def license = "APACHE"
+    def license = "BSD3"
 
     // Details of company behind the plugin (if there is one)
-//    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
+    def organization = [ name: "Clinton Health Access Initiative", url: "http://www.clintonhealthaccess.org/" ]
 
     // Any additional developers beyond the author specified above.
-//    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
+    def developers = [ 
+		[ name: "Jean Kahigiso", email: "jkahigiso@clintonhealthaccess.org" ],
+		[ name: "Sue Lister", email: "slister@clintonhealthaccess.org" ],
+		[ name: "François Terrier", email: "fterrier@clintonhealthaccess.org" ]
+	]
 
     // Location of the plugin's issue tracker.
 //    def issueManagement = [ system: "JIRA", url: "http://jira.grails.org/browse/GPMYPLUGIN" ]
 
     // Online location of the plugin's browseable source code.
-//    def scm = [ url: "http://svn.grails-plugins.codehaus.org/browse/grails-plugins/" ]
+    def scm = [ url: "http://github.com/uginm102/grails-chai-locations" ]
 
     def doWithWebDescriptor = { xml ->
         // TODO Implement additions to web.xml (optional), this event occurs before

@@ -4,8 +4,11 @@ import grails.validation.ValidationException;
 
 import org.chai.location.DataLocation;
 import org.chai.location.DataLocationType;
+import org.springframework.dao.DataIntegrityViolationException;
 
 class LocationSpec extends IntegrationTests {
+	
+	def sessionFactory
 	
 	def "type cannot be null"() {
 		setup:
@@ -24,23 +27,47 @@ class LocationSpec extends IntegrationTests {
 		thrown ValidationException
 	}
 
-	// test does not work because it's run in one transaction
-//	def "root location"() {
-//		setup:
-//		def level = newLocationLevel(CODE(1), 1)
-//		
-//		when:
-//		new Location(code: CODE(1), level: level).save(failOnError: true, flush: true)
-//		
-//		then:
-//		Location.count() == 1
-//		
-//		when:
-//		new Location(code: CODE(2), level: level).save(failOnError: true)
-//		
-//		then:
-//		thrown ValidationException
-//	}
+	def "deleting location does not delete data locations"() {
+		setup:
+		setupLocationTree()
+		
+		when:
+		LocationLevel.findByCode(DISTRICT).removeFromLocations(Location.findByCode(BURERA))
+		Location.findByCode(NORTH).removeFromChildren(Location.findByCode(BURERA))
+		Location.findByCode(BURERA).delete(flush: true)
+		
+		then:
+		thrown DataIntegrityViolationException
+	}
+	
+	def "deleting location does not delete child locations"() {
+		setup:
+		setupLocationTree()
+		
+		when:
+		LocationLevel.findByCode(NATIONAL).removeFromLocations(Location.findByCode(RWANDA))
+		Location.findByCode(RWANDA).delete(flush: true)
+		
+		then:
+		thrown DataIntegrityViolationException
+	}
+	
+	def "root location"() {
+		setup:
+		def level = newLocationLevel(CODE(1), 1)
+		
+		when:
+		new Location(code: CODE(1), level: level).save(failOnError: true, flush: true)
+		
+		then:
+		Location.count() == 1
+		
+		when:
+		new Location(code: CODE(2), level: level).save(failOnError: true)
+		
+		then:
+		thrown ValidationException
+	}
 	
 	def "code cannot be null"() {
 		setup:
@@ -76,7 +103,7 @@ class LocationSpec extends IntegrationTests {
 		thrown ValidationException
 	}
 	
-	// TODO move to kevin since this is implementation dependant
+	// TODO move to kevin since this is implementation dependent
 //	def "data location type code cannot contain delimiter"() {
 //		when:
 //		new DataLocationType(code: CODE(1)).save(failOnError: true)

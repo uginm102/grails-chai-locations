@@ -27,8 +27,6 @@
  */
 package org.chai.location;
 
-import i18nfields.I18nFields
-
 /**
 * @author Jean Kahigiso M.
 *
@@ -38,6 +36,10 @@ class LocationLevel{
 	
 	String code
 	String names
+	Integer order
+
+	// deprecated
+	String jsonNames
 	
 	static hasMany = [locations: Location]
 	
@@ -50,11 +52,14 @@ class LocationLevel{
 	static constraints ={
 		code nullable: false, unique: true, blank: false
 		names nullable: true, blank: true
+		
+		// deprecated
+		jsonNames nullable: true
 	}
 	
 	static mapping = {
-		table "chai_location_level"
-		locations column: "location_id"
+		table "chai_location_location_level"
+		order column: "ordering"
 		version false
 //		names_en type:"text"
 //		names_fr type:"text"

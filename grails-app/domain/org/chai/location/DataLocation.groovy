@@ -34,10 +34,23 @@ package org.chai.location;
 
 class DataLocation extends CalculationLocation {
 
-	DataLocationType type
+	// deprecated
+	Long id;
 	
-	static belongsTo = [type: DataLocationType, location: Location]
+	DataLocationType type
+	Location location
 
+	static mapping = {
+		table "chai_location_data_location"
+		type column: 'type'
+		location column: 'location'
+	}
+	
+	static constraints = {
+		type (nullable: false)
+		location (nullable: false)
+	}
+	
 	List<DataLocation> getDataLocations() {
 		def result = new ArrayList<DataLocation>();
 		result.add(this);
@@ -66,14 +79,4 @@ class DataLocation extends CalculationLocation {
 		return "DataLocation[Id=" + id + ", Code=" + code + "]";
 	}
 	
-	static mapping = {
-		table "chai_location_data_location"
-		version false
-	}
-	
-	static constraints = {
-		importFrom CalculationLocation
-		type (nullable: false)
-		location (nullable: false)
-	}
 }

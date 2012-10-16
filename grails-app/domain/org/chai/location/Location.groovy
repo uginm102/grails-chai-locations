@@ -31,17 +31,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.FlushMode;
+
 /**
-* @author Jean Kahigiso M.
-*
-*/
+ * @author Jean Kahigiso M.
+ */
 class Location extends CalculationLocation {
 
 	Location parent
 	LocationLevel level
 	
-	static belongsTo = [parent: Location, level: LocationLevel]
-	static hasMany = [dataLocations: DataLocation,children: Location]
+	static hasMany = [dataLocations: DataLocation, children: Location]
+	
+	static constraints = {
+		level nullable: false
+		parent(nullable: true, validator: { val, obj ->
+			// TODO validate that there are no loops, i.e the graph must be a DAG
+			if (val == null) {
+				Location.withSession { session ->
+					def flushMode = session.getFlushMode()
+					session.setFlushMode(FlushMode.MANUAL);
+					def roots = Location.findAllByParentIsNull()
+					session.setFlushMode(flushMode);
+					return roots.empty || roots.equals([obj])
+				}
+			}
+		})
+	}
+	
+	static mapping = {
+		table "chai_location_location"
+		level column: "level"
+		parent column: "parent"
+	}
 	
 	//gets all location children
 	List<Location> getChildren(Set<LocationLevel> skipLevels) {
@@ -112,24 +134,5 @@ class Location extends CalculationLocation {
 	String toString() {
 		return "Location[Id=" + id + ", Code=" + code + "]";
 	}
-	
-	static constraints = {
-		importFrom CalculationLocation
-		level nullable: false
-		parent(nullable: true, validator: { val, obj ->
-//			if (val == null) {
-//				Location.withNewTransaction {
-//					def roots = Location.findAllByParentIsNull()
-//					return roots.empty || roots.equals([obj])
-//				}
-//			}
-			// TODO validate that there are no loops, i.e the graph must be a DAG
-			return true
-		})
-	}
-	
-	static mapping = {
-		table "chai_location_location"
-		version false
-	}
+
 }

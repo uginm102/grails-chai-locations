@@ -4,6 +4,21 @@ import grails.plugin.spock.UnitSpec;
 
 class CalculationLocationUnitSpec extends UnitSpec {
 
+	def "test equals"() {
+		when:
+		def level = new LocationLevel(code: 'level1')
+		
+		then:
+		!level.equals(new LocationLevel(code: 'level2'))
+		
+		when:
+		def location = new Location(code: 'location1')
+		
+		then:
+		!location.equals(new Location(code: 'location2'))
+	}
+	
+	
 	def "get data entities on location location"() {
 		when:
 		def rwanda = new Location(code: "rwanda")

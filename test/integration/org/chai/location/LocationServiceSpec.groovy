@@ -148,18 +148,21 @@ class LocationServiceSpec extends IntegrationTests {
 		
 		then:
 		result*.code.equals([RWANDA])
+		result.totalCount == 3
 		
 		when:
 		result = locationService.searchLocation(Location.class, "", [max: 2])
 		
 		then:
 		result*.code.equals([RWANDA, NORTH])
+		result.totalCount == 3
 		
 		when:
 		result = locationService.searchLocation(Location.class, "", [max: 2, offset: 1])
 		
 		then:
 		result*.code.equals([NORTH, BURERA])
+		result.totalCount == 3
 	}
 	
 	def "search order on names field"() {

@@ -1,10 +1,11 @@
-<plugin name='locations' version='0.2.2-CHAI' grailsVersion='2.1 &gt; *'>
-  <author>Your name</author>
+<plugin name='chai-locations' version='0.2.3-CHAI' grailsVersion='1.3.7 &gt; *'>
+  <author>Eugene Munyaneza</author>
+  <authorEmail>emunyaneza@clintonhealthaccess.org</authorEmail>
   <title>CHAI Locations Plugin</title>
-  <description>Brief summary/description of the plugin.
+  <description>CHAI locations plugin.
 </description>
-  <documentation>http://grails.org/plugin/locations</documentation>
-  <type>LocationsGrailsPlugin</type>
+  <documentation>http://github.org/uginm102/grails-chai-locations</documentation>
+  <type>ChaiLocationsGrailsPlugin</type>
   <resources>
     <resource>org.chai.location.CalculationLocation</resource>
     <resource>org.chai.location.DataLocation</resource>
@@ -17,6 +18,7 @@
   <repositories>
     <repository name='grailsCentral' url='http://grails.org/plugins' />
     <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='github' url='null' />
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
   </repositories>
   <dependencies />
@@ -25,9 +27,6 @@
       <plugin group='org.grails.plugins' name='i18n-fields' version='0.6.1-CHAI' />
     </compile>
   </plugins>
-  <runtimePluginRequirements>
-    <plugin name='i18n-fields' version='0.6.1-CHAI' />
-    <plugin name='hibernate' version='2.1.0' />
-  </runtimePluginRequirements>
+  <runtimePluginRequirements />
   <behavior />
 </plugin>

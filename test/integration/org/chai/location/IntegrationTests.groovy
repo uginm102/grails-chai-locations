@@ -58,10 +58,10 @@ abstract class IntegrationTests extends IntegrationSpec {
 		def hc = newDataLocationType(['en':HEALTH_CENTER_GROUP], HEALTH_CENTER_GROUP);
 		def dh = newDataLocationType(['en':DISTRICT_HOSPITAL_GROUP], DISTRICT_HOSPITAL_GROUP);
 		
-		def country = newLocationLevel(['en':NATIONAL], NATIONAL)
-		def province = newLocationLevel(['en':PROVINCE], PROVINCE)
-		def district = newLocationLevel(['en':DISTRICT], DISTRICT)
-		def sector = newLocationLevel(['en':SECTOR], SECTOR)
+		def country = newLocationLevel(['en':NATIONAL], NATIONAL, 1)
+		def province = newLocationLevel(['en':PROVINCE], PROVINCE, 2)
+		def district = newLocationLevel(['en':DISTRICT], DISTRICT, 3)
+		def sector = newLocationLevel(['en':SECTOR], SECTOR, 4)
 			
 		def rwanda = newLocation(['en':RWANDA], RWANDA,null,country)
 		def north = newLocation(['en':NORTH], NORTH, rwanda, province)
@@ -77,8 +77,8 @@ abstract class IntegrationTests extends IntegrationSpec {
 		return dataLocationType.save(failOnError: true)
 	}
 	
-	public static def newLocationLevel(def names, def code) {
-		def locationLevel = new LocationLevel(code: code)
+	public static def newLocationLevel(def names, def code, def order) {
+		def locationLevel = new LocationLevel(code: code, order: order)
 		setLocaleValueInMap(locationLevel,names,"Names")
 		return locationLevel.save(failOnError: true)
 	}

@@ -38,7 +38,11 @@ public class DataLocationType {
 	String code
 	String names
 	
+	// deprecated
+	String jsonNames
+	
 	static hasMany = [dataLocations: DataLocation]
+	
 	static i18nFields = ['names']
 	
 	String toString() {
@@ -48,14 +52,13 @@ public class DataLocationType {
 	static constraints ={
 		code nullable: false, blank: false, unique: true
 		names nullable: true, blank: true
+		
+		// deprecated
+		jsonNames nullable: true
 	}
 	
 	static mapping = {
 		table "chai_location_data_location_type"
-		version false
-//		names_en type:"text"
-//		names_fr type:"text"
-//		names_rw type:"text"
 	}
 
 	@Override
