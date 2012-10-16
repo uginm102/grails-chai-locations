@@ -168,19 +168,19 @@ class LocationServiceSpec extends IntegrationTests {
 		def result
 		
 		when:
-		result = locationService.searchLocation(Location.class, "", [sort: 'names', order: 'asc'])
+		result = locationService.searchLocation(Location.class, "", [sort: 'names_en', order: 'asc'])
 		
 		then:
 		result*.code.equals([BURERA, NORTH, RWANDA])
 		
 		when:
-		result = locationService.searchLocation(Location.class, "", [sort: 'names', order: 'desc'])
+		result = locationService.searchLocation(Location.class, "", [sort: 'names_en', order: 'desc'])
 		
 		then:
 		result*.code.equals([RWANDA, NORTH, BURERA])
 		
 		when: "default is asc"
-		result = locationService.searchLocation(Location.class, "", [sort: 'names'])
+		result = locationService.searchLocation(Location.class, "", [sort: 'names_en'])
 		
 		then:
 		result*.code.equals([BURERA, NORTH, RWANDA])

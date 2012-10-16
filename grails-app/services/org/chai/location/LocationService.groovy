@@ -28,6 +28,9 @@ package org.chai.location;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.StringUtils
 import org.chai.location.CalculationLocation;
 import org.chai.location.DataLocation;
@@ -108,36 +111,15 @@ public class LocationService {
 	public <T extends CalculationLocation> List<T> searchLocation(Class<T> clazz, String text, Map<String, String> params) {
 		def dbFieldName = 'names_'+languageService.getCurrentLanguagePrefix();
 		def criteria = clazz.createCriteria()
-		
-		// we add the text criteria with "or"
-		def textRestrictions = Restrictions.conjunction()
-		StringUtils.split(text).each { chunk ->
-			def disjunction = Restrictions.disjunction();
-			
-			disjunction.add(Restrictions.ilike("code", chunk, MatchMode.ANYWHERE))
-			disjunction.add(Restrictions.ilike(dbFieldName, chunk, MatchMode.ANYWHERE))
-			
-			textRestrictions.add(disjunction)
+		return  criteria.list(offset:params.offset,max:params.max,sort:params.sort ?:"id",order: params.order ?:"asc"){
+			StringUtils.split(text).each { chunk ->
+				 or{
+					 ilike("code","%"+chunk+"%")
+					 ilike(dbFieldName,"%"+chunk+"%")
+				 }
+			}
 		}
-		criteria.add(textRestrictions)
-		
-		// we set the offset and max results
-		if (params.offset != null) criteria.setFirstResult(params.offset)
-		if (params.max != null) criteria.setMaxResults(params.max)
-		
-		// we set the sort param
-		List<T> locations = null
-		if (params.sort != null) {
-			def sort = params.sort
-			if (sort == 'names') sort = sort + '_' + languageService.getCurrentLanguagePrefix()
-			def order = null
-			if (params.order == 'desc') order = Order.desc(sort)
-			else order = Order.asc(sort)
-			locations = criteria.addOrder(order).list()
-		}
-		else locations = criteria.addOrder(Order.asc("id")).list()
-		
-		return locations
+			
 	}
 	
 	public <T extends CalculationLocation> T getCalculationLocation(Long id, Class<T> clazz) {
