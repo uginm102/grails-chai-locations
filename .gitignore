@@ -3,3 +3,4 @@ stacktrace.log
 eclipse_workspace_settings.epf
 test/projects/location-test/web-app/WEB-INF/classes/
 web-app/WEB-INF/classes/
+.DS_Store
