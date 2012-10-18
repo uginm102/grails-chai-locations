@@ -33,12 +33,11 @@ package org.chai.location;
 */
 
 class DataLocation extends CalculationLocation {
-
-	// deprecated
-	Long id;
 	
 	DataLocationType type
 	Location location
+	DataLocation managedBy
+	static hasMany  = [manages: DataLocation]
 
 	static mapping = {
 		table "chai_location_data_location"
@@ -47,8 +46,9 @@ class DataLocation extends CalculationLocation {
 	}
 	
 	static constraints = {
-		type (nullable: false)
-		location (nullable: false)
+		type nullable: false
+		location nullable: false
+		managedBy nullable: true
 	}
 	
 	List<DataLocation> getDataLocations() {

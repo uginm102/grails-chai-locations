@@ -26,6 +26,20 @@ class LocationSpec extends IntegrationTests {
 		then:
 		thrown ValidationException
 	}
+	
+	def "data location can be maneged and can manage another"(){
+		setup:
+		setupLocationTree()
+		when:
+		def manager = DataLocation.findByCode(BUTARO)
+		def managed = new DataLocation(code: CODE(1), type: DataLocationType.findByCode(HEALTH_CENTER_GROUP),managedBy:manager,location: Location.findByCode(BURERA))
+		manager.addToManages(managed)
+		manager.save(failOnError: true)
+		then:
+		manager.manages.asList()[0] == managed
+		managed.managedBy == manager
+		
+	}
 
 	def "deleting location does not delete data locations"() {
 		setup:
