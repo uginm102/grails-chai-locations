@@ -17,5 +17,30 @@
                 <nature>org.eclipse.jdt.core.javanature</nature>
         </natures>
         <linkedResources>
+	        <link>
+	                <name>.plugin-src-rest-client-builder-1.0.2-src-groovy</name>
+	                <type>2</type>
+	                <locationURI>GRAILS_WORKDIR/projects/chai-locations/plugins/rest-client-builder-1.0.2/src/groovy</locationURI>
+	        </link>
+	        <link>
+	                <name>.plugin-src-release-2.0.4-src-java</name>
+	                <type>2</type>
+	                <locationURI>GRAILS_WORKDIR/projects/chai-locations/plugins/release-2.0.4/src/java</locationURI>
+	        </link>
+	        <link>
+	                <name>.plugin-src-release-2.0.4-src-groovy</name>
+	                <type>2</type>
+	                <locationURI>GRAILS_WORKDIR/projects/chai-locations/plugins/release-2.0.4/src/groovy</locationURI>
+	        </link>
+	        <link>
+	                <name>.plugin-src-i18n-fields-0.6.1-CHAI-src-groovy</name>
+	                <type>2</type>
+	                <locationURI>GRAILS_WORKDIR/projects/chai-locations/plugins/i18n-fields-0.6.1-CHAI/src/groovy</locationURI>
+	        </link>
+	        <link>
+	                <name>.plugin-src-hibernate-2.1.0-grails-app-i18n</name>
+	                <type>2</type>
+	                <locationURI>GRAILS_WORKDIR/projects/chai-locations/plugins/hibernate-2.1.0/grails-app/i18n</locationURI>
+	        </link>
         </linkedResources>
 </projectDescription>

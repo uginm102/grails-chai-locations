@@ -59,6 +59,7 @@ abstract class CalculationLocation {
 		tablePerSubclass true
 		cache true
 		coordinates type: "text"
+		code unique: true, index: "Code_Index"
 	}
 
 	

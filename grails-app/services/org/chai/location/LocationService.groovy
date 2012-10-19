@@ -28,20 +28,11 @@ package org.chai.location;
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import java.util.List;
-import java.util.Map;
+import java.util.List
+import java.util.Map
 
 import org.apache.commons.lang.StringUtils
-import org.chai.location.CalculationLocation;
-import org.chai.location.DataLocation;
-import org.chai.location.DataLocationType;
-import org.chai.location.Location;
-import org.chai.location.LocationLevel;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.MatchMode
-import org.hibernate.criterion.Order
-import org.hibernate.criterion.Projections
-import org.hibernate.criterion.Restrictions
+import org.hibernate.criterion.Restrictions;
 
 /**
 * @author Jean Kahigiso M.

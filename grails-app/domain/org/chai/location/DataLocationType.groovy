@@ -59,6 +59,7 @@ public class DataLocationType {
 	
 	static mapping = {
 		table "chai_location_data_location_type"
+		code unique: true
 	}
 
 	@Override

@@ -45,17 +45,12 @@ grails.project.dependency.resolution = {
 
     plugins {
 		build(":tomcat:$grailsVersion",
-              ":release:2.0.3",
+              ":release:2.0.4",
               ":rest-client-builder:1.0.2") {
             export = false
         }
-		compile (":hibernate:$grailsVersion") {
-			export = false
-		}
+		compile ":hibernate:$grailsVersion"
 		compile ":i18n-fields:0.6.1-CHAI"
-		
-		test (":spock:0.6") {
-			export = false
-		}
+		test ":spock:0.6"
     }
 }

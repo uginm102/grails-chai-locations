@@ -61,9 +61,7 @@ class LocationLevel{
 		table "chai_location_location_level"
 		order column: "ordering"
 		version false
-//		names_en type:"text"
-//		names_fr type:"text"
-//		names_rw type:"text"
+		code unique: true
 	}
 	
 	@Override
