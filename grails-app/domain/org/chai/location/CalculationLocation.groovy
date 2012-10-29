@@ -36,6 +36,9 @@ import i18nfields.I18nFields
 @i18nfields.I18nFields
 abstract class CalculationLocation {
 
+	// deprecated
+	Long id
+	
 	String code
 	String names
 	String coordinates
@@ -91,7 +94,7 @@ abstract class CalculationLocation {
 	
 	Map<String, String> getNamesMap() {
 		Map result = [:]
-		result.metaClass.get = {String language -> return getNames(new Locale(language))}
+		result.getMetaClass().get = {String language -> return getNames(new Locale(language))}
 	}
 	
 	@Override

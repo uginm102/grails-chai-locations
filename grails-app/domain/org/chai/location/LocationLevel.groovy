@@ -62,6 +62,7 @@ class LocationLevel{
 		order column: "ordering"
 		version false
 		code unique: true
+		cache true
 	}
 	
 	@Override

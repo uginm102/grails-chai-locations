@@ -63,6 +63,8 @@ class Location extends CalculationLocation {
 		table "chai_location_location"
 		level column: "level"
 		parent column: "parent"
+		children cache: true
+		dataLocations cache: true
 	}
 	
 	//gets all location children

@@ -29,10 +29,13 @@ package org.chai.location;
  */
 
 import java.util.List
+import java.util.Locale;
 import java.util.Map
 
 import org.apache.commons.lang.StringUtils
 import org.hibernate.criterion.Restrictions;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 /**
 * @author Jean Kahigiso M.
@@ -42,7 +45,6 @@ public class LocationService {
 	
 	static transactional = true
 	
-	def languageService;
 	def sessionFactory;	
 	
     Location getRootLocation() {
@@ -100,7 +102,7 @@ public class LocationService {
 	}
 	
 	public <T extends CalculationLocation> List<T> searchLocation(Class<T> clazz, String text, Map<String, String> params) {
-		def dbFieldName = 'names_'+languageService.getCurrentLanguagePrefix();
+		def dbFieldName = 'names_' + currentLanguage.language;
 		def criteria = clazz.createCriteria()
 		return  criteria.list(offset:params.offset,max:params.max,sort:params.sort ?:"id",order: params.order ?:"asc"){
 			StringUtils.split(text).each { chunk ->
@@ -180,6 +182,10 @@ public class LocationService {
 				collectChildrenOfLevel(child, level, locations);
 			}
 		}
+	}
+	
+	static Locale getCurrentLanguage(){
+		return RequestContextUtils.getLocale(RequestContextHolder.currentRequestAttributes().getRequest());
 	}
 	
 }
