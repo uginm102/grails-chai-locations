@@ -68,7 +68,7 @@ class Location extends CalculationLocation {
 	}
 	
 	//gets all location children
-	List<Location> getChildren(Set<LocationLevel> skipLevels) {
+	List<Location> getChildren(def skipLevels) {
 		def result = new ArrayList<Location>();
 		for (def child : children) {
 			if (skipLevels != null && skipLevels.contains(child.level)) {
@@ -81,7 +81,7 @@ class Location extends CalculationLocation {
 	
 	// returns the children data locations only, without collecting data locations at lower levels
 	// if the child's level is skipped, returns the child's data locations
-	List<DataLocation> getDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+	List<DataLocation> getDataLocations(def skipLevels, def types) {
 		List<DataLocation> result = new ArrayList<DataLocation>();
 		for (DataLocation dataLocation : dataLocations) {
 			if (types == null || types.contains(dataLocation.type)) 
@@ -98,7 +98,7 @@ class Location extends CalculationLocation {
 	}
 			
 	//gets all location children and data locations
-	List<CalculationLocation> getChildrenLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+	List<CalculationLocation> getChildrenLocations(def skipLevels, def types) {
 		def result = new ArrayList<CalculationLocation>();
 		result.addAll(getChildren(skipLevels));
 		result.addAll(getDataLocations(skipLevels, types));
@@ -106,7 +106,16 @@ class Location extends CalculationLocation {
 	}
 	
 	//gets all location children and data locations (that have data locations)
-	List<CalculationLocation> getChildrenEntitiesWithDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types, boolean data = true) {
+	/**
+	 * Returns all the immediate children, taking into account the skip levels, the data location types specified.
+	 * If data is true, returns a list with both immediate location children and data locations. If data is false,
+	 * returns only the locations.
+	 * 
+	 * @param skipLevels
+	 * @param types
+	 * @return
+	 */
+	List<CalculationLocation> getChildrenEntitiesWithDataLocations(def skipLevels, def types, boolean data = true) {
 		def result = new ArrayList<CalculationLocation>();
 		
 		def locationChildren = getChildren(skipLevels);
@@ -122,11 +131,16 @@ class Location extends CalculationLocation {
 	}
 	
 	//gets all location children, grand-children, etc (that have data locations)
-	List<Location> collectTreeWithDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types, boolean data = true) {
+	List<Location> collectTreeWithDataLocations(def skipLevels, def types, boolean data = true) {
 		def locations = new ArrayList<Location>();
 		collectLocations(locations, null, skipLevels, types);
 		if (data) locations.addAll(collectDataLocations(skipLevels, types));
 		return locations;
+	}
+	
+	Location getParentOfLevel(LocationLevel level) {
+		if (this.level.equals(level)) return this
+		else return parent?.getParentOfLevel(level)
 	}
 	
 	boolean collectsData() {

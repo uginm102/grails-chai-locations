@@ -27,11 +27,14 @@
  */
 package org.chai.location;
 
+import groovy.transform.EqualsAndHashCode;
+
 /**
 * @author Jean Kahigiso M.
 *
 */
 @i18nfields.I18nFields
+@EqualsAndHashCode(includes='code')
 class LocationLevel{
 	
 	String code
@@ -65,28 +68,4 @@ class LocationLevel{
 		cache true
 	}
 	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this.is(obj))
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		LocationLevel other = (LocationLevel) obj;
-		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
-			return false;
-		return true;
-	}
 }

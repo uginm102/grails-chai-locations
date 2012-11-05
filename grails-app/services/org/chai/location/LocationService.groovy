@@ -52,7 +52,7 @@ public class LocationService {
     }
 
 	List<LocationLevel> listLevels() {
-		return LocationLevel.list([cache: true])
+		return LocationLevel.list([cache: true]).sort({it.order})
 	}
 	
 	List<DataLocationType> listTypes() {
@@ -96,15 +96,10 @@ public class LocationService {
 		return dataLocations;
 	}
 
-	Long getNumberOfDataLocationsForType(DataLocationType type){
-		def dataLocations = DataLocation.createCriteria().list(){eq("type",type)}
-		return dataLocations.totalCount;
-	}
-	
 	public <T extends CalculationLocation> List<T> searchLocation(Class<T> clazz, String text, Map<String, String> params) {
-		def dbFieldName = 'names_' + currentLanguage.language;
+		def dbFieldName = 'names_' + currentLocale.language;
 		def criteria = clazz.createCriteria()
-		return  criteria.list(offset:params.offset,max:params.max,sort:params.sort ?:"id",order: params.order ?:"asc"){
+		return criteria.list(offset:params.offset, max:params.max, sort:params.sort ?:"id", order: params.order ?:"asc"){
 			StringUtils.split(text).each { chunk ->
 				 or{
 					 ilike("code","%"+chunk+"%")
@@ -158,16 +153,6 @@ public class LocationService {
 		else return null;		
 	}
 	
-	// TODO move to location
-	Location getParentOfLevel(CalculationLocation location, LocationLevel level) {
-		def tmp = location.parent;
-		while (tmp != null) {
-			if (tmp.level.equals(level)) return tmp;
-			tmp = tmp.parent;
-		}
-		return null;
-	}
-	
 	// TODO move to Location
 	List<Location> getChildrenOfLevel(Location location, LocationLevel level) {
 		def result = new ArrayList<Location>();
@@ -184,7 +169,7 @@ public class LocationService {
 		}
 	}
 	
-	static Locale getCurrentLanguage(){
+	static Locale getCurrentLocale(){
 		return RequestContextUtils.getLocale(RequestContextHolder.currentRequestAttributes().getRequest());
 	}
 	

@@ -117,21 +117,6 @@ class LocationSpec extends IntegrationTests {
 		thrown ValidationException
 	}
 	
-	// TODO move to kevin since this is implementation dependent
-//	def "data location type code cannot contain delimiter"() {
-//		when:
-//		new DataLocationType(code: CODE(1)).save(failOnError: true)
-//		
-//		then:
-//		DataLocationType.count() == 1
-//		
-//		when:
-//		new DataLocationType(code: CODE(1)+Utils.DEFAULT_TYPE_CODE_DELIMITER).save(failOnError: true)
-//		
-//		then:
-//		thrown ValidationException
-//		
-//	}
 	
 	def "get all children"(){
 		setup:

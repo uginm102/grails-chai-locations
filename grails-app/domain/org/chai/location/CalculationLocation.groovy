@@ -27,6 +27,7 @@
  */
 package org.chai.location;
 
+import groovy.transform.EqualsAndHashCode;
 import i18nfields.I18nFields
 
 /**
@@ -34,6 +35,7 @@ import i18nfields.I18nFields
 *
 */
 @i18nfields.I18nFields
+@EqualsAndHashCode(includes='code')
 abstract class CalculationLocation {
 
 	// deprecated
@@ -66,7 +68,7 @@ abstract class CalculationLocation {
 	}
 
 	
-	boolean collectLocations(List<Location> locations, List<DataLocation> dataLocations, Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+	boolean collectLocations(List<Location> locations, List<DataLocation> dataLocations, def skipLevels, def types) {
 		boolean result = false;
 		for (Location child : getChildren(skipLevels)) {
 			result = result | child.collectLocations(locations, dataLocations, skipLevels, types);
@@ -84,45 +86,14 @@ abstract class CalculationLocation {
 		return result;
 	}
 	
-	List<DataLocation> collectDataLocations(Set<LocationLevel> skipLevels, Set<DataLocationType> types) {
+	List<DataLocation> collectDataLocations(def skipLevels, def types) {
 		List<DataLocation> dataLocations = new ArrayList<DataLocation>();
 		collectLocations(null, dataLocations, skipLevels, types);
 		return dataLocations;
 	}
 	
+	abstract Location getParentOfLevel(LocationLevel level)
+	
 	abstract boolean collectsData();
 	
-	Map<String, String> getNamesMap() {
-		Map result = [:]
-		result.getMetaClass().get = {String language -> return getNames(new Locale(language))}
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((code == null) ? 0 : code.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this.is(obj)) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof CalculationLocation)) {
-			return false;
-		}
-		CalculationLocation other = (CalculationLocation) obj;
-		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
-			return false;
-		return true;
-	}
-			
 }

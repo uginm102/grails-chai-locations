@@ -36,6 +36,7 @@ class DataLocation extends CalculationLocation {
 	
 	DataLocationType type
 	Location location
+	
 	DataLocation managedBy
 	static hasMany  = [manages: DataLocation]
 
@@ -69,6 +70,10 @@ class DataLocation extends CalculationLocation {
 
 	List<Location> getChildren(Set<LocationLevel> skipLevels) {
 		return getChildren();
+	}
+	
+	Location getParentOfLevel(LocationLevel level) {
+		return this.location?.getParentOfLevel(level)
 	}
 	
 	boolean collectsData() {
