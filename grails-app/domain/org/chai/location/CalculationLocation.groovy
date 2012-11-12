@@ -27,15 +27,15 @@
  */
 package org.chai.location;
 
-import groovy.transform.EqualsAndHashCode;
+import groovy.transform.EqualsAndHashCode
 import i18nfields.I18nFields
 
 /**
 * @author Jean Kahigiso M.
 *
 */
-@i18nfields.I18nFields
 @EqualsAndHashCode(includes='code')
+@i18nfields.I18nFields
 abstract class CalculationLocation {
 
 	// deprecated
@@ -45,18 +45,12 @@ abstract class CalculationLocation {
 	String names
 	String coordinates
 	
-	// deprecated
-	String jsonNames;
-	
 	static i18nFields = ['names']
 
 	static constraints = {
 		code nullable: false, blank: false, unique: true
 		coordinates nullable: true, blank: true
 		names nullable: true, blank: true
-		
-		// deprecated
-		jsonNames nullable: true
 	}
 	
 	static mapping = {

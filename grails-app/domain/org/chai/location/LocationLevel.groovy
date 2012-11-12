@@ -33,16 +33,13 @@ import groovy.transform.EqualsAndHashCode;
 * @author Jean Kahigiso M.
 *
 */
-@i18nfields.I18nFields
 @EqualsAndHashCode(includes='code')
+@i18nfields.I18nFields
 class LocationLevel{
 	
 	String code
 	String names
 	Integer order
-
-	// deprecated
-	String jsonNames
 	
 	static hasMany = [locations: Location]
 	
@@ -55,9 +52,6 @@ class LocationLevel{
 	static constraints ={
 		code nullable: false, unique: true, blank: false
 		names nullable: true, blank: true
-		
-		// deprecated
-		jsonNames nullable: true
 	}
 	
 	static mapping = {

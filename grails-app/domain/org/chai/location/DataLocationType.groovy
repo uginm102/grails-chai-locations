@@ -33,15 +33,14 @@ import i18nfields.I18nFields
 /**
  * @author Jean Kahigiso M.
  */
-@i18nfields.I18nFields
 @EqualsAndHashCode(includes='code')
+@i18nfields.I18nFields
 public class DataLocationType {
 	
 	String code
+	String order
 	String names
-	
-	// deprecated
-	String jsonNames
+	Boolean defaultSelected
 	
 	static hasMany = [dataLocations: DataLocation]
 	
@@ -53,15 +52,15 @@ public class DataLocationType {
 	
 	static constraints ={
 		code nullable: false, blank: false, unique: true
-		names nullable: true, blank: true
-		
-		// deprecated
-		jsonNames nullable: true
+		names nullable: true
+		order nullable: true
+		defaultSelected nullable: false
 	}
 	
 	static mapping = {
 		table "chai_location_data_location_type"
 		code unique: true
+		order column: 'ordering'
 		cache: true
 	}
 

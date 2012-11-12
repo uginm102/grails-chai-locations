@@ -50,7 +50,7 @@ grails.project.dependency.resolution = {
             export = false
         }
 		compile ":hibernate:$grailsVersion"
-		compile ":i18n-fields:0.6.1-CHAI"
+		compile ":i18n-fields:0.6.3-CHAI"
 		test ":spock:0.6"
     }
 }

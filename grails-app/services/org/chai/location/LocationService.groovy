@@ -73,29 +73,6 @@ public class LocationService {
 		return levels;
 	}
 	
-	// TODO what is this exactly ?
-	List<DataLocation> getDataLocationsOfType(Set<CalculationLocation> locations,Set<DataLocationType> types){
-		if (log.isDebugEnabled()) log.debug("List<DataLocation> getDataLocations(Set<CalculationLocation> "+locations+"Set<DataLocationType>"+types+")");
-		def dataLocations= new ArrayList<DataLocation>()
-		
-		for(CalculationLocation location: locations){
-			if(location instanceof DataLocation)
-				if(!dataLocations.contains(location))
-					dataLocations.add(location)
-			if(location instanceof Location)
-				for(DataLocation dataLocation: location.collectDataLocations(null,null))
-					if(!dataLocations.contains(dataLocation))
-						dataLocations.add(dataLocation)
-		}
-		
-		if(types!=null && !types.isEmpty()){
-			for(DataLocation dataLocation : new ArrayList(dataLocations))
-				if(!types.contains(dataLocation.type))
-					dataLocations.remove(dataLocation);
-		}
-		return dataLocations;
-	}
-
 	public <T extends CalculationLocation> List<T> searchLocation(Class<T> clazz, String text, Map<String, String> params) {
 		def dbFieldName = 'names_' + currentLocale.language;
 		def criteria = clazz.createCriteria()
